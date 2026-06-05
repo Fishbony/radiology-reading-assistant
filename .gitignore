@@ -1,0 +1,32 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs/temp
+*.log
+.tmp/
+tmp/
+
+# Patient data / protected health information - never commit
+patient-data/
+dicom/
+DICOM/
+*.dcm
+*.dicom
+*.nii
+*.nii.gz
+*.nrrd
+*.mha
+*.mhd
+*.jpg
+*.jpeg
+*.png
+*.mp4
+*.mov
+*.avi
