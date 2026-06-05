@@ -41,9 +41,9 @@ Identify:
 - Contrast phase or MRI sequence
 - Whether the input is a complete study, selected images, key frames, or a video
 - Image quality limitations: motion, artifacts, incomplete coverage, non-diagnostic phase, poor distention, metal artifact, low resolution
-- Available clinical context: age, sex, symptoms, labs, known cancer/infection/trauma, treatment history, surgery, prior imaging
+- Available clinical context: age, sex, pregnancy/postpartum status when relevant, symptoms, symptom duration, physical examination, vital signs, laboratory tests, tumor markers, pathology/endoscopy results, known cancer/infection/trauma, treatment history, surgery, prior imaging, and the exact clinical question
 
-If information is missing, proceed with a limited interpretation and explicitly list what is needed.
+If information is missing, proceed with a limited interpretation and explicitly list what is needed. Do not ignore supplied clinical information; integrate it into the diagnostic reasoning and differential diagnosis.
 
 ### 2. Detect urgent findings first
 Screen for critical diagnoses relevant to the region:
@@ -95,10 +95,11 @@ When an image or video is provided, follow this operational sequence:
    - Provide visible findings first.
    - Avoid making a confident diagnosis from pattern recognition alone.
 
-4. **Rank the differential**
+4. **Integrate clinical information and rank the differential**
+   - Use age, sex, symptoms, duration, physical examination, laboratory tests, prior imaging, pathology/endoscopy, and treatment history to adjust pre-test probability.
    - Most likely diagnosis first.
    - Include key alternatives that would change management.
-   - For each differential, list both supporting and opposing imaging features.
+   - For each differential, list both supporting and opposing imaging and clinical features.
 
 5. **Attach evidence when feasible**
    - Cite guidelines, textbooks, reviews, or PubMed-indexed papers.
@@ -125,6 +126,55 @@ Before finalizing a response, check:
 - If using similar-case images, did I link rather than copy copyrighted images?
 - Did I avoid patient identifiers and avoid overclaiming?
 - Did I include next-step imaging/clinical correlation only when useful?
+
+## Clinical-radiologic integration
+
+Radiology interpretation should not be based on image appearance alone when clinical information is available. Integrate the image findings with the pre-test probability created by the clinical context.
+
+### Clinical information to actively use
+
+When available, incorporate:
+- Age and sex
+- Pregnancy/postpartum status, immune status, and relevant risk factors
+- Main symptoms and duration: pain, fever, weight loss, bleeding, jaundice, neurologic deficit, trauma mechanism, obstructive symptoms, etc.
+- Physical examination and vital signs: peritonitis, shock, focal neurologic signs, respiratory distress, palpable mass, tenderness location
+- Laboratory tests: WBC, CRP/ESR, hemoglobin, lactate, D-dimer, renal function, liver enzymes, bilirubin, amylase/lipase, urinalysis, coagulation tests, tumor markers when relevant
+- Prior tests: endoscopy, pathology, ultrasound, prior X-ray/CT/MRI, operative history, treatment response, microbiology, genetic or oncologic history
+- Prior imaging comparison: new, improved, stable, progressed, treatment-related, postoperative baseline vs complication
+
+### How clinical information should change the answer
+
+Use clinical data to:
+1. Adjust the ranking of differential diagnoses.
+2. Distinguish mimics with overlapping imaging appearances.
+3. Decide whether urgent diagnoses must be excluded even if the submitted image is incomplete.
+4. Recommend the most useful next correlation or imaging step.
+5. Avoid overcalling incidental findings that do not fit the clinical question.
+
+Examples:
+- Fever + high WBC/CRP + rim-enhancing collection increases the likelihood of abscess over necrotic tumor.
+- Sudden severe pain + high lactate + reduced bowel wall enhancement raises concern for ischemia even if findings are subtle.
+- Known malignancy changes the prior probability of metastasis, but infection, treatment effect, and second primary tumor may still need consideration.
+- Young age and chronic inflammatory symptoms may shift bowel-wall-thickening differentials toward IBD/infection, while older age with anemia/weight loss increases concern for malignancy.
+
+### Required final diagnostic structure
+
+After integrating imaging and clinical information, provide a final diagnostic block like this:
+
+```text
+Integrated impression:
+1. Most likely diagnosis: ... (confidence: high/moderate/low)
+   - Imaging basis: ...
+   - Clinical/lab basis: ...
+   - Key limitation: ...
+
+Differential diagnoses to consider:
+1. ... — why it remains possible; what argues against it; how to confirm/exclude
+2. ... — why it remains possible; what argues against it; how to confirm/exclude
+3. ... — why it remains possible; what argues against it; how to confirm/exclude
+```
+
+Even when the most likely diagnosis is strong, include several clinically important differential diagnoses after the final diagnosis, especially those that change management or are common mimics.
 
 ## Body-wide diagnostic modules
 
@@ -366,18 +416,29 @@ The assistant should use accumulated corrections to improve future differential 
 
 ### Concise clinical response
 ```text
-Based on the provided images/video, this is a limited interpretation because [...].
+Based on the provided images/video and clinical information, this is a limited interpretation because [...].
 
-Key findings:
+Clinical context used:
+- Age/sex:
+- Symptoms and duration:
+- Physical exam/vitals:
+- Laboratory tests:
+- Prior imaging/pathology/endoscopy/treatment:
+
+Key imaging findings:
 1. ...
 2. ...
 
-Most likely diagnosis:
-- ... (confidence: high/moderate/low)
+Integrated impression:
+1. Most likely diagnosis: ... (confidence: high/moderate/low)
+   - Imaging basis: ...
+   - Clinical/lab basis: ...
+   - Key limitation: ...
 
-Differential diagnosis:
-1. ... — supporting features; features against
-2. ... — supporting features; features against
+Differential diagnoses to consider:
+1. ... — supporting imaging/clinical features; features against; how to confirm/exclude
+2. ... — supporting imaging/clinical features; features against; how to confirm/exclude
+3. ... — supporting imaging/clinical features; features against; how to confirm/exclude
 
 Urgent findings to exclude:
 - ...

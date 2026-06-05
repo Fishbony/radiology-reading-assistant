@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.2.0
+
+- Added clinical-radiologic integration requirements.
+- Added explicit use of age, sex, symptoms, physical exam, labs, prior imaging, pathology/endoscopy, and treatment history.
+- Updated final diagnostic output to include an integrated impression plus several differential diagnoses to consider.
+- Added clinical integration template.
+
 ## 1.1.0
 
 - Added operational algorithm for image/video cases.

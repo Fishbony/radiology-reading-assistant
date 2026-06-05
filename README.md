@@ -24,6 +24,13 @@ Image/data adequacy:
 - Modality/region/sequence:
 - Completeness and limitations:
 
+Clinical context used:
+- Age/sex:
+- Symptoms and duration:
+- Physical exam/vitals:
+- Laboratory tests:
+- Prior imaging/pathology/endoscopy/treatment:
+
 Critical findings:
 - Present / absent / indeterminate:
 
@@ -32,14 +39,17 @@ Key imaging findings:
 2.
 3.
 
-Most likely diagnosis:
-- Diagnosis:
+Integrated impression:
+- Most likely diagnosis:
 - Confidence:
-- Rationale:
+- Imaging basis:
+- Clinical/lab basis:
+- Key limitation:
 
-Differential diagnosis:
-1. Diagnosis — supporting features; features against
-2. Diagnosis — supporting features; features against
+Differential diagnoses to consider:
+1. Diagnosis — supporting imaging/clinical features; features against; how to confirm/exclude
+2. Diagnosis — supporting imaging/clinical features; features against; how to confirm/exclude
+3. Diagnosis — supporting imaging/clinical features; features against; how to confirm/exclude
 
 Evidence support:
 - Guideline/textbook/review/case source:
@@ -83,7 +93,7 @@ examples/example-general-case.md              Example usage
 
 1. Copy `SKILL.md` into your AI assistant's system prompt, skill directory, or reusable instruction library.
 2. When providing images, remove patient identifiers and avoid uploading original clinical data unless permitted by law and institutional policy.
-3. Provide minimal context when possible: age range, sex if relevant, symptoms, modality, contrast phase/sequence, prior cancer/surgery, and the clinical question.
+3. Provide clinical context when possible: age range, sex, symptoms and duration, relevant physical examination/vitals, laboratory tests, prior imaging, pathology/endoscopy, treatment/surgery history, modality, contrast phase/sequence, and the clinical question.
 4. Ask for one of the output styles:
    - concise clinical interpretation
    - teaching explanation
