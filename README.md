@@ -1,66 +1,124 @@
 # Radiology Reading Assistant
 
-A general-purpose radiology image-interpretation prompt/skill framework for X-ray, CT, MRI, fluoroscopy, and dynamic imaging. It is designed to help clinicians and learners structure image review, describe key imaging findings, build differential diagnoses, identify urgent findings, and draft radiology-style impressions.
+A body-wide radiology image-interpretation prompt/skill framework for X-ray, CT, MRI, fluoroscopy, dynamic imaging, and selected ultrasound screenshots/videos.
 
-## Scope
+It is designed to help clinicians, trainees, and AI assistants produce structured radiology reasoning: image adequacy assessment, urgent finding screening, systematic description, differential diagnosis, literature-supported interpretation, similar-case comparison, and report-style wording.
 
-This project is body-wide rather than organ-specific. It covers a structured workflow for:
+> Safety: this repository is for education and workflow support only. It is not a medical device and does not replace interpretation by qualified clinicians using complete original imaging data.
 
-- Chest imaging
-- Cardiovascular and vascular imaging
-- Neuroradiology and head & neck imaging
-- Abdominal and gastrointestinal imaging
-- Hepatobiliary, pancreatic, and splenic imaging
-- Genitourinary imaging
-- Female pelvis and obstetric-related imaging safety considerations
-- Musculoskeletal imaging
-- Spine imaging
-- Pediatric imaging safety considerations
-- Oncologic imaging and treatment-response assessment
-- Emergency radiology
-- Dynamic imaging such as fluoroscopy, defecography, and cine MRI
+## Key features
 
-## What this is
+- Body-wide coverage: chest, cardiovascular, neuro, head & neck, abdomen, hepatobiliary/pancreas, genitourinary, female pelvis, musculoskeletal, spine, pediatric, oncology, emergency, and dynamic imaging
+- Modality-aware workflow for X-ray, CT, MRI, fluoroscopy, cine/video, and screen-recorded image stacks
+- Critical-findings-first approach for emergency radiology
+- Structured differential diagnosis with supporting and opposing features
+- Evidence support using guidelines, textbooks, reviews, PubMed-indexed literature, and open teaching-file cases when available
+- Similar-case image retrieval workflow: compare the submitted case with visually similar published or open educational images, without redistributing copyrighted images
+- Feedback-based self-iteration: when a diagnosis is corrected, record de-identified lessons and update future reasoning
+- Privacy-first design: do not commit DICOM files, patient images, or protected health information
 
-- A structured radiology reasoning framework
-- A differential-diagnosis support prompt
-- A report-drafting aid
-- A checklist for image-review completeness and safety
-- Literature, textbook, and similar-case image support when references are available
-- Feedback-based self-iteration: when a diagnosis is corrected, the framework records de-identified lessons and updates future reasoning
-- A reusable AI skill/prompt for radiology education and workflow assistance
-
-## What this is not
-
-This project is not a medical device, not a diagnostic product, and not a substitute for a qualified radiologist or other licensed clinician. It does not provide definitive diagnoses. Final interpretation requires complete imaging data, clinical history, laboratory data, prior studies, and professional judgment.
-
-See `references/safety-disclaimer.md`.
-
-## Recommended answer format
+## Recommended output format
 
 ```text
-1. Image/data adequacy
-2. Key imaging findings
-3. Most likely diagnosis, with confidence
-4. Differential diagnosis
-5. Urgent/critical findings to exclude
-6. Recommended additional imaging or clinical correlation
-7. Suggested report wording
+Image/data adequacy:
+- Modality/region/sequence:
+- Completeness and limitations:
+
+Critical findings:
+- Present / absent / indeterminate:
+
+Key imaging findings:
+1.
+2.
+3.
+
+Most likely diagnosis:
+- Diagnosis:
+- Confidence:
+- Rationale:
+
+Differential diagnosis:
+1. Diagnosis — supporting features; features against
+2. Diagnosis — supporting features; features against
+
+Evidence support:
+- Guideline/textbook/review/case source:
+- DOI/PMID/URL if available:
+- Why it supports the diagnosis:
+
+Similar-case image comparison:
+- Source link if available:
+- Similarities:
+- Differences:
+- Copyright/license note:
+
+Recommended next step:
+-
+
+Suggested report wording:
+-
 ```
 
 ## Repository structure
 
 ```text
-SKILL.md                                  Main reusable skill/prompt
-README.md                                 Project overview
-references/safety-disclaimer.md           Medical safety disclaimer
-references/body-wide-checklist.md         Body-wide interpretation checklist
-templates/structured-reading-template.md  General output template
-templates/report-template.md              Report-style template
-templates/differential-diagnosis-template.md Differential diagnosis template
-examples/example-general-case.md          Example usage
+SKILL.md                                      Main reusable prompt/skill
+README.md                                     Project overview
+LICENSE                                       CC BY-NC 4.0 summary and link
+CONTRIBUTING.md                               Contribution and case-submission rules
+CHANGELOG.md                                  Version history
+references/safety-disclaimer.md               Medical safety disclaimer
+references/body-wide-checklist.md             Body-wide interpretation checklist
+references/evidence-retrieval-workflow.md     Literature and similar-case search workflow
+references/feedback-learning-policy.md        De-identified correction-learning policy
+templates/structured-reading-template.md      General output template
+templates/report-template.md                  Report-style template
+templates/differential-diagnosis-template.md  Differential diagnosis template
+templates/literature-support-template.md      Evidence and similar-case template
+templates/correction-learning-template.md     Feedback learning template
+examples/example-general-case.md              Example usage
 ```
+
+## How to use
+
+1. Copy `SKILL.md` into your AI assistant's system prompt, skill directory, or reusable instruction library.
+2. When providing images, remove patient identifiers and avoid uploading original clinical data unless permitted by law and institutional policy.
+3. Provide minimal context when possible: age range, sex if relevant, symptoms, modality, contrast phase/sequence, prior cancer/surgery, and the clinical question.
+4. Ask for one of the output styles:
+   - concise clinical interpretation
+   - teaching explanation
+   - differential diagnosis only
+   - report wording
+   - evidence-supported answer with similar-case references
+5. If the answer is corrected by pathology, surgery, follow-up, or expert consensus, use `templates/correction-learning-template.md` to record a de-identified lesson.
+
+## Evidence philosophy
+
+The framework should prefer established, high-quality sources:
+
+1. Official reporting systems, society guidelines, and consensus statements
+2. Major radiology textbooks and educational references
+3. High-quality radiology reviews such as RadioGraphics, Radiology, AJR, European Radiology, Insights into Imaging, Abdominal Radiology, Neuroradiology, Skeletal Radiology
+4. Multicenter studies and case series
+5. Single case reports or open teaching-file cases when visually very similar
+
+The assistant should not claim to have read all books or all papers. It should describe the best available evidence it can retrieve or cite.
+
+## Privacy and patient data
+
+Do not commit or publish:
+
+- DICOM files
+- screenshots with patient identifiers
+- accession numbers
+- exact dates of service
+- face photographs or uniquely identifying anatomy without proper consent/de-identification
+- local hospital or operator-specific private information
+
+The `.gitignore` blocks common medical image formats and media files by default.
 
 ## License
 
-Suggested license: CC BY-NC 4.0 if you want to prevent direct commercial reuse, or MIT if you want maximum adoption. Choose one before publishing.
+This repository is released under CC BY-NC 4.0. See `LICENSE`.
+
+You may share and adapt the material with attribution for non-commercial purposes. Commercial use is not permitted under this license.

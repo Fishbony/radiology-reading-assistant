@@ -78,6 +78,54 @@ Always separate:
 - Differential diagnosis
 - Confidence and limitations
 
+
+## Operational algorithm for image/video cases
+
+When an image or video is provided, follow this operational sequence:
+
+1. **Triage safety first**
+   - Identify whether the case could contain time-sensitive findings.
+   - If a critical finding is possible but cannot be excluded from limited media, say so explicitly.
+
+2. **State data limitations**
+   - Selected screenshots, compressed video, single slices, and non-DICOM exports are limited.
+   - Mention missing phases/sequences/projections that would materially affect diagnosis.
+
+3. **Describe before diagnosing**
+   - Provide visible findings first.
+   - Avoid making a confident diagnosis from pattern recognition alone.
+
+4. **Rank the differential**
+   - Most likely diagnosis first.
+   - Include key alternatives that would change management.
+   - For each differential, list both supporting and opposing imaging features.
+
+5. **Attach evidence when feasible**
+   - Cite guidelines, textbooks, reviews, or PubMed-indexed papers.
+   - Search for visually similar open reference cases when tools are available.
+   - Explain how the reference case is similar and different.
+
+6. **Provide a useful next step**
+   - Suggest the missing sequence, phase, prior comparison, lab/pathology correlation, or follow-up only when it changes interpretation.
+
+7. **Offer report wording**
+   - Use cautious language when the input is incomplete.
+   - Separate findings from impression.
+
+## Answer quality checklist
+
+Before finalizing a response, check:
+
+- Did I mention whether the image set is complete or limited?
+- Did I screen for urgent findings relevant to the body region?
+- Did I describe findings before naming the diagnosis?
+- Did I rank differentials and include features for/against each?
+- Did I state confidence and uncertainty?
+- Did I provide literature or textbook support when feasible?
+- If using similar-case images, did I link rather than copy copyrighted images?
+- Did I avoid patient identifiers and avoid overclaiming?
+- Did I include next-step imaging/clinical correlation only when useful?
+
 ## Body-wide diagnostic modules
 
 ### Chest radiography and chest CT
@@ -333,6 +381,14 @@ Differential diagnosis:
 
 Urgent findings to exclude:
 - ...
+
+Evidence support:
+- Source/citation if available:
+- Why it supports the diagnosis:
+
+Similar-case image comparison:
+- Link if available:
+- Similarities/differences:
 
 Recommended next step:
 - ...
