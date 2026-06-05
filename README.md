@@ -26,6 +26,8 @@ This project is body-wide rather than organ-specific. It covers a structured wor
 - A differential-diagnosis support prompt
 - A report-drafting aid
 - A checklist for image-review completeness and safety
+- Literature, textbook, and similar-case image support when references are available
+- Feedback-based self-iteration: when a diagnosis is corrected, the framework records de-identified lessons and updates future reasoning
 - A reusable AI skill/prompt for radiology education and workflow assistance
 
 ## What this is not

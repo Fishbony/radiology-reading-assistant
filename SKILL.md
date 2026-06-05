@@ -234,6 +234,86 @@ Examples:
 - Cine cardiac MRI: wall motion, valvular motion, pericardial constraint if visible
 - Scrolling CT/MRI recording: identify the clearest level and ask for original DICOM/series if needed
 
+
+## Literature, textbook, and similar-case image support
+
+When users provide an imaging photo, screenshot, video, or case description and ask for the most likely diagnosis, the response should include evidence support whenever feasible.
+
+### Evidence hierarchy
+
+Prefer sources in this order:
+1. Official reporting systems, society guidelines, and consensus statements
+2. Major radiology textbooks and educational references
+3. High-quality review articles such as RadioGraphics, Radiology, AJR, European Radiology, Insights into Imaging, Abdominal Radiology, Neuroradiology, Skeletal Radiology, and similar sources
+4. Multicenter studies and well-described case series
+5. Single case reports or open teaching-file cases when they are visually close to the submitted case
+
+### Similar-case image retrieval
+
+If web or literature search tools are available, actively search for visually and clinically similar reference cases using:
+- Modality
+- Body region
+- Key imaging signs
+- Suspected diagnosis
+- Main differential diagnosis
+- Contrast phase or MRI sequence when relevant
+
+Suggested search patterns:
+```text
+<disease> <modality> imaging findings radiology case
+<organ> <key imaging sign> <disease> CT MRI differential diagnosis
+<disease> Radiographics imaging findings differential diagnosis
+site:pubmed.ncbi.nlm.nih.gov <disease> imaging CT MRI differential diagnosis
+site:radiopaedia.org <disease> CT MRI case
+```
+
+When a similar reference image is found, report:
+- Citation: title, journal/book/source, year, DOI/PMID/URL if available
+- Why it is similar: modality, location, morphology, signal/density, enhancement, distribution, complications
+- How it differs: missing sequence, different phase, disease extent, patient context, atypical features
+- Evidence strength: guideline/textbook/review/case series/case report
+
+Do not copy or redistribute copyrighted images unless the license permits it. Prefer linking to the source and describing the similarity.
+
+If no highly similar open image is found, say so explicitly and provide the closest available literature support instead.
+
+## Feedback learning and self-iteration
+
+When the user says the diagnosis was wrong or provides the final diagnosis from pathology, surgery, follow-up, multidisciplinary discussion, or expert report, the assistant must treat it as a learning event.
+
+### Correction workflow
+
+1. Acknowledge the correction without defensiveness.
+2. Restate the final diagnosis and the originally suggested diagnosis.
+3. Identify the likely reason for the error:
+   - incomplete image set or missing sequence
+   - overlooked imaging sign
+   - incorrect differential ranking
+   - over-weighting a common diagnosis
+   - under-recognition of an atypical presentation
+   - insufficient clinical context
+4. Extract a reusable rule:
+   - "When imaging shows [...], do not forget [...]."
+   - "This disease can mimic [...], especially when [...]."
+   - "The discriminating feature is [...]."
+5. Store only de-identified lessons. Do not store names, IDs, accession numbers, dates, or images containing protected health information.
+6. Update the skill, reference notes, or memory when the lesson is broadly useful.
+
+### Correction note template
+
+```text
+Correction note:
+- Initial impression:
+- Final diagnosis:
+- Evidence for final diagnosis: pathology / surgery / follow-up / expert report / user feedback / literature
+- Missed or underweighted imaging clue:
+- Mimic/pitfall:
+- Rule for next time:
+- Suggested literature/reference to add:
+```
+
+The assistant should use accumulated corrections to improve future differential diagnosis and should explicitly mention relevant prior pitfalls when a similar pattern appears again.
+
 ## Response templates
 
 ### Concise clinical response
