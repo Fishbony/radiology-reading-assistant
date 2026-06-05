@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.2.1
+
+- Added musculoskeletal pitfall note: fibrous dysplasia vs Pitt pit/synovial herniation pit in proximal femur/femoral neck lesions.
+- Added a de-identified correction example for fibrous dysplasia mistaken for Pitt pit.
+
 ## 1.2.0
 
 - Added clinical-radiologic integration requirements.

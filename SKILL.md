@@ -283,6 +283,7 @@ Differentials:
 Assess:
 - Alignment, fracture, dislocation
 - Bone lesion: age, location, matrix, zone of transition, periosteal reaction, cortical destruction, soft-tissue mass
+- For proximal femur/femoral neck lesions, explicitly assess whether the lesion is small and subcortical at the head-neck junction versus intramedullary with ground-glass matrix, expansion, cortical thinning, or deformity
 - Joint: effusion, erosions, cartilage loss, synovitis
 - Soft tissue: compartment, fat, fluid, enhancement, necrosis
 
@@ -290,6 +291,7 @@ Differentials:
 - Trauma vs infection vs tumor vs inflammatory arthropathy
 - Benign aggressive vs malignant bone tumor
 - Osteomyelitis vs neuropathic joint vs malignancy
+- Proximal femur pitfall: distinguish Pitt pit/synovial herniation pit from fibrous dysplasia. Pitt pit is usually a small, well-defined subcortical lucency at the femoral head-neck junction, often with a sclerotic rim and femoroacetabular impingement association. Fibrous dysplasia is more often intramedullary, may show ground-glass matrix, mild expansion, cortical thinning/deformity, and can involve the femoral neck/proximal femur.
 
 ### Spine imaging
 Assess:
